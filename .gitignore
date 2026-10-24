@@ -1,0 +1,11 @@
+# Dependencies
+/node_modules
+
+# Production
+/build
+
+# Generated files
+/.vitepress/cache
+
+# Misc
+.DS_Store

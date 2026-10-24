@@ -1,0 +1,189 @@
+:root {
+  --rb-font-display: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --vp-font-family-mono:
+    "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --vp-c-gray-1: #d9cdbf;
+  --vp-c-gray-2: #e4d9cc;
+  --vp-c-gray-3: #ede4d9;
+  --vp-c-gray-soft: rgba(132, 98, 66, 0.1);
+
+  --vp-c-bg: #fbf7f1;
+  --vp-c-bg-alt: #f5eee4;
+  --vp-c-bg-elv: #fffdf9;
+  --vp-c-bg-soft: #f3ebe0;
+
+  --vp-c-border: #d8c9b7;
+  --vp-c-divider: #e9dfd2;
+  --vp-c-gutter: #e9dfd2;
+
+  --vp-c-text-1: #2b1f17;
+  --vp-c-text-2: #62524a;
+  --vp-c-text-3: #8f7d6e;
+
+  --vp-c-brand-1: #95461a;
+  --vp-c-brand-2: #a9511e;
+  --vp-c-brand-3: #a0501f;
+  --vp-c-brand-soft: rgba(160, 80, 31, 0.12);
+
+  --vp-code-color: #8a3f16;
+  --vp-code-block-bg: #f4ece1;
+  --vp-code-tab-divider: var(--vp-c-divider);
+
+  --vp-home-hero-name-color: var(--vp-c-brand-1);
+  --vp-local-search-highlight-bg: var(--vp-c-brand-3);
+  --vp-local-search-highlight-text: #fffaf3;
+
+  --rb-crema: #e9b980;
+  --rb-feature-rule: var(--vp-c-brand-3);
+}
+
+.dark {
+  --vp-c-gray-1: #5d4c40;
+  --vp-c-gray-2: #483a31;
+  --vp-c-gray-3: #362b24;
+  --vp-c-gray-soft: rgba(201, 164, 128, 0.1);
+
+  --vp-c-bg: #18120e;
+  --vp-c-bg-alt: #130e0b;
+  --vp-c-bg-elv: #211913;
+  --vp-c-bg-soft: #221a14;
+
+  --vp-c-border: #44362c;
+  --vp-c-divider: #2f241c;
+  --vp-c-gutter: #0d0907;
+
+  --vp-c-text-1: #f1e6da;
+  --vp-c-text-2: #c5b3a3;
+  --vp-c-text-3: #917e6f;
+
+  --vp-c-brand-1: #e9b17a;
+  --vp-c-brand-2: #dd9c5e;
+  --vp-c-brand-3: #a9511e;
+  --vp-c-brand-soft: rgba(233, 177, 122, 0.14);
+
+  --vp-code-color: #e9b17a;
+  --vp-code-block-bg: #100b08;
+
+  --vp-local-search-highlight-text: #fffaf3;
+}
+
+::selection {
+  background: rgba(233, 185, 128, 0.45);
+}
+
+/* Display type */
+
+.vp-doc h1,
+.vp-doc h2,
+.VPHero .name,
+.VPHero .text,
+.VPFeature .title,
+.VPNavBarTitle .title {
+  font-family: var(--rb-font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.012em;
+}
+
+.vp-doc h1 {
+  font-weight: 620;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h2 {
+  font-weight: 600;
+}
+
+.VPNavBarTitle .title {
+  font-size: 19px;
+  font-weight: 620;
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-family: var(--rb-font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+/* Links and inline code */
+
+.vp-doc a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.vp-doc :not(pre) > code {
+  border-radius: 4px;
+}
+
+/* Code blocks get a hairline, so cream-on-cream still reads as a panel. */
+
+.vp-doc div[class*="language-"],
+.vp-code-group .tabs {
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-code-group .tabs {
+  border-bottom: none;
+}
+
+.vp-code-group div[class*="language-"] {
+  border-top: none;
+}
+
+.dark .vp-doc div[class*="language-"],
+.dark .vp-code-group .tabs {
+  border-color: transparent;
+}
+
+@media (max-width: 639px) {
+  .vp-doc div[class*="language-"],
+  .vp-code-group .tabs {
+    border-left: none;
+    border-right: none;
+  }
+}
+
+/* Home */
+
+.VPHero .name {
+  font-weight: 640;
+}
+
+.VPHero .text {
+  font-weight: 420;
+  color: var(--vp-c-text-1);
+}
+
+.VPHero .image-bg {
+  background: radial-gradient(closest-side, rgba(233, 185, 128, 0.42), transparent);
+  filter: blur(36px);
+}
+
+.dark .VPHero .image-bg {
+  background: radial-gradient(closest-side, rgba(169, 81, 30, 0.45), transparent);
+}
+
+.VPFeatures .item .VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  border-top: 3px solid var(--rb-feature-rule);
+  border-radius: 6px;
+  background: var(--vp-c-bg-elv);
+}
+
+.VPFeatures .item .VPFeature .title {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+/* Tables */
+
+.vp-doc th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background: transparent;
+}

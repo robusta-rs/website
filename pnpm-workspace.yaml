@@ -1,0 +1,10 @@
+catalog:
+  vite-plus: ^1.0.0
+overrides:
+  vite: npm:@voidzero-dev/vite-plus-core@latest
+peerDependencyRules:
+  allowAny:
+    - vite
+  allowedVersions:
+    vite: "*"
+verifyDepsBeforeRun: install
