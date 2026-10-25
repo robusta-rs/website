@@ -30,7 +30,6 @@
   --vp-code-block-bg: #f4ece1;
   --vp-code-tab-divider: var(--vp-c-divider);
 
-  --vp-home-hero-name-color: var(--vp-c-brand-1);
   --vp-local-search-highlight-bg: var(--vp-c-brand-3);
   --vp-local-search-highlight-text: #fffaf3;
 
@@ -76,7 +75,6 @@
 
 .vp-doc h1,
 .vp-doc h2,
-.VPHero .name,
 .VPHero .text,
 .VPFeature .title,
 .VPNavBarTitle .title {
@@ -146,10 +144,6 @@
 }
 
 /* Home */
-
-.VPHero .name {
-  font-weight: 640;
-}
 
 .VPHero .text {
   font-weight: 420;
