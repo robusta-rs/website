@@ -8,3 +8,6 @@ peerDependencyRules:
   allowedVersions:
     vite: "*"
 verifyDepsBeforeRun: install
+allowBuilds:
+  esbuild: true
+  workerd: true

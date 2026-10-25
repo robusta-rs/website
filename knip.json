@@ -3,6 +3,7 @@
   "entry": [".vitepress/config.ts", "src/**/*.md!"],
   "project": [".vitepress/**/*.ts", "src/**/*.md"],
   "ignore": [".vitepress/cache/**", "build/**"],
+  "ignoreDependencies": ["wrangler"],
   "ignoreBinaries": ["typos"],
   "ignoreExportsUsedInFile": true
 }
