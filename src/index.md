@@ -1,6 +1,7 @@
 ---
 layout: home
 hero:
+  name: Robusta
   text: Format and lint Java.
   tagline: One native executable, the same configuration locally and in CI.
   image:
