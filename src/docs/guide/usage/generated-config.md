@@ -33,6 +33,15 @@ Java formatter policy.
 Java formatter settings. Omitted values use `.editorconfig` fallbacks and
 then Robusta's built-in defaults.
 
+### format.after-closing-brace
+
+type: `"same-line" | "new-line"`
+
+Where `else`, `catch`, and `finally` go after a closing brace. Default: `same-line`.
+
+`same-line` keeps the keyword on the closing brace's line, and `new-line`
+puts it on a new line.
+
 ### format.continuation-indent-width
 
 type: `integer`
