@@ -1,3 +1,7 @@
+---
+search: false
+---
+
 # Robusta Configuration File
 
 Robusta reads `robusta.yaml` from the directory it processes, or from the

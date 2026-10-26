@@ -1,4 +1,6 @@
-# Command summary
+---
+search: false
+---
 
 - [`robusta`↴](#robusta)
 - [`robusta check`↴](#robusta-check)
