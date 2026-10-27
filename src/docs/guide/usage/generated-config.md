@@ -146,10 +146,12 @@ one line.
 
 #### format.javadoc.description-with-dot
 
-type: `boolean`
+type: `"never" | "summary" | "always"`
 
-End each description paragraph that ends in a letter or digit with a
-period. Default: `false`.
+Which descriptions that end in a letter or digit get a period. Default: `never`.
+
+`never` adds no period, `summary` adds one to the summary javadoc shows for
+the comment, and `always` adds one to each description paragraph.
 
 #### format.javadoc.line-wrapping-style
 
