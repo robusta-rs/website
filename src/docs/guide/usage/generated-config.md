@@ -160,6 +160,13 @@ Whether paragraphs are rewrapped or keep line breaks that fit. Default: `greedy`
 `greedy` fills each line to the line width. `keep` keeps a paragraph's line
 breaks when every line fits.
 
+#### format.javadoc.paragraph-html-tags
+
+type: `boolean`
+
+Start each paragraph after the first of a traditional comment with
+`<p>`, and remove one from the first. Default: `false`.
+
 #### format.javadoc.separate-tag-groups
 
 type: `"never" | "before-return" | "always"`
