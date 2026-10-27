@@ -226,12 +226,12 @@ Category severities: correctness defaults to `warn`, other categories to `allow`
 
 ### lint.rules
 
-type: `Record<string, string>`
+type: `object`
 
 default: `{}`
 
-Built-in rule IDs mapped to `allow`, `warn`, or `deny`.
-Overrides the rule's category severity.
+Built-in rule IDs mapped to `allow`, `warn`, or `deny`, or to
+`[severity, settings]`. Overrides the rule's category severity.
 
 ## options
 
