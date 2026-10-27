@@ -178,15 +178,11 @@ Where blank lines separate block tags. Default: `never`.
 
 ### format.line-ending
 
-type: `"auto" | "lf" | "crlf" | "cr"`
+type: `"lf" | "crlf" | "cr"`
 
-Line terminator emitted by the formatter.
+Line terminator emitted by the formatter. Default: `lf`.
 
-The line terminator the formatter emits.
-
-`auto` resolves per file from the file's own bytes — the first terminator
-wins, LF when the file has none — and is never derived from the host
-platform. `lf`, `crlf`, and `cr` force that ending for every file.
+`lf`, `crlf`, and `cr` end each output line with LF, CRLF, or CR.
 
 ### format.line-width
 
