@@ -46,12 +46,6 @@ Where `else`, `catch`, and `finally` go after a closing brace. Default: `same-li
 `same-line` keeps the keyword on the closing brace's line, and `new-line`
 puts it on a new line.
 
-### format.continuation-indent-width
-
-type: `integer`
-
-Spaces added to wrapped continuation lines. Defaults to twice `indent-width`.
-
 ### format.import-order
 
 type: `object`
