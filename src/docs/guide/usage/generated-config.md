@@ -255,3 +255,58 @@ Report suppressions that silence no finding, including those for disabled rules.
 Only the main configuration may set this; defaults to `allow`.
 
 Configured severity for lint findings.
+
+## overrides
+
+type: `array`
+
+Settings for the Java files that match patterns. When a file matches
+several overrides, the later one wins.
+
+### overrides[n]
+
+type: `object`
+
+Settings for the Java files one override matches.
+
+#### overrides[n].exclude-files
+
+type: `string[]`
+
+Glob patterns for the files this override leaves out.
+
+Glob patterns relative to the directory containing `robusta.yaml`. `*` does not cross `/`, `**` does, and a pattern without `/` matches a name at any depth.
+
+#### overrides[n].files
+
+type: `string[]`
+
+Glob patterns for the files this override applies to.
+
+Glob patterns relative to the directory containing `robusta.yaml`. `*` does not cross `/`, `**` does, and a pattern without `/` matches a name at any depth.
+
+#### overrides[n].format
+
+type: `object`
+
+Format settings that replace the ones in effect, each named setting on its own.
+
+Java formatter settings. Omitted values use `.editorconfig` fallbacks and
+then Robusta's built-in defaults.
+
+#### overrides[n].lint
+
+type: `object`
+
+Rule values that replace the ones in effect, as `lint.rules` does.
+
+The rules an override changes.
+
+##### overrides[n].lint.rules
+
+type: `object`
+
+default: `{}`
+
+Built-in rule IDs mapped to `allow`, `warn`, or `deny`, or to
+`[severity, settings]`.
