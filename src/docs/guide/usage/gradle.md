@@ -10,8 +10,7 @@ artifacts bundle the native executable.
 
 ::: info Before the first release
 Version `0.1.0` has not been published. The plugin declaration below describes
-the intended release setup. For local development, include the plugin's Gradle
-build and supply a locally built executable as described below.
+the intended release setup.
 :::
 
 ## Apply the plugin
@@ -23,16 +22,6 @@ plugins {
     id("rs.robusta") version "0.1.0"
 }
 ```
-
-For local development, add a composite build before that block:
-
-```kotlin
-pluginManagement {
-    includeBuild("/path/to/robusta/jvm")
-}
-```
-
-Pass `-ProbustaExecutable=/path/to/robusta` to use your built native executable.
 
 ## Run a task
 
@@ -81,9 +70,9 @@ project's directory.
 ```
 
 An enclosing source run can cover an inner task when its operation, options,
-executable, working directory, and source coverage match. Covered tasks are
-skipped after a successful enclosing run. Native-pruned directories and
-nested repository boundaries can require separate runs; physical nesting
-alone does not guarantee coverage.
+working directory, and source coverage match. Covered tasks are skipped after
+a successful enclosing run. Native-pruned directories and nested repository
+boundaries can require separate runs; physical nesting alone does not
+guarantee coverage.
 
 A shared build service serializes Robusta tasks, including with `--parallel`.

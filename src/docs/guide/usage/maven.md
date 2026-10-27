@@ -9,9 +9,8 @@ The `rs.robusta:robusta-maven-plugin` plugin exposes goals that run the native
 executable bundled in published plugin artifacts.
 
 ::: info Before the first release
-Version `0.1.0` has not been published. This configuration requires that
-version to be published or installed in a Maven repository you can access.
-For a source-only trial, use the native CLI in the [Quickstart](./quickstart).
+Version `0.1.0` has not been published. The plugin configuration below
+describes the intended release setup.
 :::
 
 ## Configure the plugin
@@ -64,9 +63,6 @@ For an arbitrary native command, use the pass-through goal:
 ```sh
 mvn robusta:run -Drobusta.args="lint --rules"
 ```
-
-To override the bundled executable, set
-`-Drobusta.executable=/path/to/robusta`.
 
 ## Multi-module builds
 

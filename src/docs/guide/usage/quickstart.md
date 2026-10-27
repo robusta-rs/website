@@ -12,8 +12,7 @@ copy-paste commands.
 
 ::: info Before the first release
 Version `0.1.0` has not been published. The plugin declarations below describe
-the intended release setup. Until then, build the native executable from the
-Robusta source checkout.
+the intended release setup.
 :::
 
 ::: code-group
@@ -38,15 +37,7 @@ plugins {
 </build>
 ```
 
-```sh [Native]
-# From the Robusta source checkout
-cargo build --release --locked --bin robusta
-```
-
 :::
-
-The native build writes `target/release/robusta` (`robusta.exe` on Windows).
-Put it on your `PATH` for the commands on this page.
 
 Run it:
 
