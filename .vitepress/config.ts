@@ -1,6 +1,7 @@
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitepress";
+import { ruleHowToUseMdPlugin } from "./plugins/ruleHowToUse";
 
 const TITLE = "Robusta";
 const DESCRIPTION = "Format and lint Java with one native executable.";
@@ -31,6 +32,9 @@ export default defineConfig({
   },
   markdown: {
     theme: { light: "gruvbox-light-medium", dark: "gruvbox-dark-medium" },
+    config(md) {
+      md.use(ruleHowToUseMdPlugin);
+    },
   },
   themeConfig: {
     logo: { light: "/robusta-dark.svg", dark: "/robusta-light.svg", alt: "Robusta" },
@@ -78,6 +82,7 @@ export default defineConfig({
       {
         text: "Reference",
         items: [
+          { text: "Rules reference", link: `${usage}rules` },
           { text: "CLI reference", link: `${usage}cli` },
           { text: "Config file reference", link: `${usage}config-file-reference` },
         ],
@@ -92,11 +97,26 @@ export default defineConfig({
       level: [2, 3],
     },
     editLink: {
-      pattern: "https://github.com/robusta-rs/website/edit/main/src/:path",
+      pattern({ filePath, frontmatter }) {
+        // Auto-generated rule pages should link to the Rust source in the robusta repo
+        if (frontmatter.source) {
+          return `https://github.com/robusta-rs/robusta/edit/main/${frontmatter.source}`;
+        }
+
+        return `https://github.com/robusta-rs/website/edit/main/src/${filePath}`;
+      },
       text: "Suggest changes to this page",
     },
   },
   vite: {
     publicDir: resolve(dirname(fileURLToPath(import.meta.url)), "../public"),
+    resolve: {
+      alias: [
+        {
+          find: "@data",
+          replacement: resolve(dirname(fileURLToPath(import.meta.url)), "data"),
+        },
+      ],
+    },
   },
 });

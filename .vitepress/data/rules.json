@@ -1,0 +1,68 @@
+[
+  {
+    "value": "unused-import",
+    "category": "correctness",
+    "fix": "fixable_fix",
+    "default": true
+  },
+  {
+    "value": "unused-local-variable",
+    "category": "correctness",
+    "fix": "fixable_dangerous_fix_or_suggestion",
+    "default": true
+  },
+  {
+    "value": "broken-null-check",
+    "category": "suspicious",
+    "fix": "none",
+    "default": false
+  },
+  {
+    "value": "duplicate-import",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  },
+  {
+    "value": "modifier-order",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  },
+  {
+    "value": "redundant-lambda-parameter-parentheses",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  },
+  {
+    "value": "redundant-leading-super-call",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  },
+  {
+    "value": "redundant-semicolons",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  },
+  {
+    "value": "redundant-terminal-return",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  },
+  {
+    "value": "simplify-value-only-lambda-body",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  },
+  {
+    "value": "uppercase-long-suffix",
+    "category": "style",
+    "fix": "fixable_fix",
+    "default": false
+  }
+]
