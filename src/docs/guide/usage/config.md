@@ -8,8 +8,8 @@ description: Configure Robusta using a robusta.yaml file.
 Robusta works out of the box, but most teams commit a `robusta.yaml` to keep
 formatting and linting consistent across local runs, builds, and CI.
 
-This page focuses on project configuration: formatting, rules, categories, and
-run options.
+This page focuses on project configuration: formatting, rules, categories,
+overrides, and run options.
 
 ## Create a config file
 
@@ -49,6 +49,7 @@ top-level fields are:
 - `format`: Formatting options such as line width, indentation, import order,
   and Javadoc.
 - `lint`: Rule and category severities.
+- `overrides`: Apply different configuration to different file patterns.
 - `ignore-patterns`: Ignore additional files from the config file.
 - `options`: Run-wide options, accepted only in the main configuration.
 
@@ -145,7 +146,8 @@ For quick experiments, you can adjust severity from the command line using:
 - `-W` / `--warn`
 - `-D` / `--deny`
 
-Arguments apply after the configuration, from left to right:
+Arguments apply after the configuration, from left to right, and a rule value
+in a matching [override](#overrides) applies after them:
 
 ```sh
 robusta lint -D unused-import -W modifier-order -A unused-local-variable
@@ -178,14 +180,44 @@ selects every rule:
 robusta lint -D correctness -W style
 ```
 
+## Overrides
+
+Use the `overrides` field to apply different formatting options and rule
+values to specific files:
+
+```yaml [robusta.yaml]
+overrides:
+  - files: ["**/src/test/**"]
+    format:
+      line-width: 120
+    lint:
+      rules:
+        unused-local-variable: allow
+  - files: ["legacy/**"]
+    exclude-files: ["legacy/api/**"]
+    format:
+      line-width: 140
+```
+
+Each override entry has:
+
+- `files` (required): Glob patterns to match files.
+- `exclude-files` (optional): Glob patterns to exclude from this override.
+- `format`: Formatting options to apply.
+- `lint`: Rule values to apply, under `rules`.
+
+Glob patterns are resolved relative to the directory containing
+`robusta.yaml`.
+
 ## Precedence
 
 Each option takes the first available value:
 
-1. A command-line flag, where one exists.
-2. An explicit value in `robusta.yaml`.
-3. A matching `.editorconfig` property, for the options it supports.
-4. Robusta's built-in default.
+1. The value from the last matching override that sets it.
+2. A command-line flag, where one exists.
+3. An explicit value in `robusta.yaml`.
+4. A matching `.editorconfig` property, for the options it supports.
+5. Robusta's built-in default.
 
 An option set to `null`, or left empty, counts as omitted.
 
