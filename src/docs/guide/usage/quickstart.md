@@ -11,8 +11,8 @@ copy-paste commands.
 ## Install
 
 ::: info Before the first release
-Version `0.1.0` has not been published. The plugin declarations below describe
-the intended release setup.
+Version `0.1.0` has not been published. The plugin declarations and native
+executable below describe the intended release setup.
 :::
 
 ::: code-group
@@ -37,6 +37,13 @@ plugins {
 </build>
 ```
 
+:::
+
+::: tip Native executable
+Robusta is also available as a native executable. Download `robusta-<target>`
+for your platform from [GitHub Releases](https://github.com/robusta-rs/robusta/releases),
+rename it to `robusta` (`robusta.exe` on Windows), make it executable, and put
+it on your `PATH`.
 :::
 
 Run it:
