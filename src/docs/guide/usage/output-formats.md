@@ -15,16 +15,6 @@ The report goes to standard output. When standard output carries a document
 instead, under `--diff`, `--list-different`, or `--stdin-filepath` with a fix
 flag, the report goes to standard error.
 
-The examples below lint this file:
-
-```java [Example.java]
-package example;
-
-import java.util.List;
-
-class Example {}
-```
-
 ## Available formats
 
 ### `--reporter=default`
