@@ -48,7 +48,7 @@ top-level fields are:
 
 - `format`: Formatting options such as line width, indentation, import order,
   and Javadoc.
-- `lint`: Rule and category severities.
+- `lint`: Rule and category severities, and rule settings.
 - `overrides`: Apply different configuration to different file patterns.
 - `ignore-patterns`: Ignore additional files from the config file.
 - `options`: Run-wide options, accepted only in the main configuration.
@@ -122,11 +122,12 @@ the current directory. A nested config that sets it is rejected.
 
 ## Configure rules
 
-Rules are configured under `lint.rules`. A rule value is a severity:
+Rules are configured under `lint.rules`.
 
-- Disable the rule: `allow`
-- Report findings as warnings: `warn`
-- Report findings as errors, failing the run: `deny`
+A rule value is either:
+
+- a severity: `allow`, `warn`, or `deny`
+- a severity and the rule's settings: `[severity, settings]`
 
 ```yaml [robusta.yaml]
 lint:
@@ -136,7 +137,23 @@ lint:
     unused-local-variable: allow
 ```
 
-`robusta lint --rules` lists every rule.
+### Severity values
+
+- Disable the rule: `allow`
+- Report findings as warnings: `warn`
+- Report findings as errors, failing the run: `deny`
+
+### Rule settings
+
+To configure a rule's settings, use a list:
+
+```yaml [robusta.yaml]
+lint:
+  rules:
+    unused-local-variable: [warn, { ignore-pattern: "^unused" }]
+```
+
+All available rules are listed in the [Rules reference](./rules).
 
 ### Override severity from the CLI
 
@@ -223,6 +240,9 @@ An option set to `null`, or left empty, counts as omitted.
 
 ## Next steps
 
-- [Nested configs](./nested-config)
-- [Ignore files](./ignore-files)
-- [Config file reference](./config-file-reference)
+- [Nested configs](./nested-config): Per-directory configuration for
+  multi-module builds.
+- [Ignore files](./ignore-files): Default ignores, `.gitignore` handling, and
+  ignore patterns in config or on the command line.
+- [Config file reference](./config-file-reference): Full schema and field
+  documentation.
