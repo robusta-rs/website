@@ -87,7 +87,7 @@ report.
   {
     "description": "imported name `List` is never used",
     "check_name": "unused-import",
-    "fingerprint": "671f7c64ee3da0ea",
+    "fingerprint": "d0ab5ebefa6c48ff",
     "severity": "major",
     "location": {
       "path": "Example.java",
