@@ -52,5 +52,6 @@ You can also disable nested configs with the `--no-nested-config` flag. Robusta
 then uses the configuration that applies to the current directory for every
 file.
 
-`options` is supported only in the main configuration, the one that applies to
-the current directory. If a nested config sets it, Robusta reports an error.
+`lint.options` is supported only in the main configuration, the one that
+applies to the current directory. If a nested config sets it, Robusta reports
+an error.

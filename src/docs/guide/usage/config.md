@@ -48,10 +48,9 @@ top-level fields are:
 
 - `format`: Formatting options such as line width, indentation, import order,
   and Javadoc.
-- `lint`: Rule and category severities, and rule settings.
+- `lint`: Rule and category severities, rule settings, and run-wide options.
 - `overrides`: Apply different configuration to different file patterns.
 - `ignore-patterns`: Ignore additional files from the config file.
-- `options`: Run-wide options, accepted only in the main configuration.
 
 For a complete list of fields, see the
 [Config file reference](./config-file-reference).
@@ -102,23 +101,24 @@ Robusta uses only the nearest `.editorconfig` above each file; nested
 
 ## Configure run options
 
-Use `options` for run-wide behavior:
+Use `lint.options` for run-wide behavior:
 
 ```yaml [robusta.yaml]
-options:
-  deny-warnings: true
-  max-warnings: 10
-  report-unused-suppressions: warn
+lint:
+  options:
+    deny-warnings: true
+    max-warnings: 10
+    report-unused-suppressions: warn
 ```
 
-- `options.deny-warnings` is equivalent to passing `--deny-warnings`.
-- `options.max-warnings` is equivalent to passing `--max-warnings`.
-- `options.report-unused-suppressions` sets the severity of
+- `lint.options.deny-warnings` is equivalent to passing `--deny-warnings`.
+- `lint.options.max-warnings` is equivalent to passing `--max-warnings`.
+- `lint.options.report-unused-suppressions` sets the severity of
   [unused suppressions](./ignore-comments#report-unused-suppressions).
 
 CLI flags take precedence when both CLI and config values are present.
-`options` is only supported in the main configuration, the one that applies to
-the current directory. A nested config that sets it is rejected.
+`lint.options` is only supported in the main configuration, the one that
+applies to the current directory. A nested config that sets it is rejected.
 
 ## Configure rules
 

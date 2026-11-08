@@ -89,8 +89,9 @@ Only one of these options can be used at a time.
 This can also be set in the main configuration file:
 
 ```yaml [robusta.yaml]
-options:
-  report-unused-suppressions: warn # or allow or deny
+lint:
+  options:
+    report-unused-suppressions: warn # or allow or deny
 ```
 
 To remove unused suppressions, add `--fix-suggestions`:
