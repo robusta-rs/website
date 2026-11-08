@@ -47,9 +47,9 @@ A configuration file is a YAML mapping. Every section is optional. The
 top-level fields are:
 
 - `format`: Formatting options such as line width, indentation, import order,
-  and Javadoc.
-- `lint`: Rule and category severities, rule settings, and run-wide options.
-- `overrides`: Apply different configuration to different file patterns.
+  and Javadoc, and their overrides for file patterns.
+- `lint`: Rule and category severities, rule settings, their overrides for
+  file patterns, and run-wide options.
 - `ignore-patterns`: Ignore additional files from the config file.
 
 For a complete list of fields, see the
@@ -199,29 +199,32 @@ robusta lint -D correctness -W style
 
 ## Overrides
 
-Use the `overrides` field to apply different formatting options and rule
-values to specific files:
+Use `format.overrides` to apply different formatting options, and
+`lint.overrides` to apply different rule values, to specific files:
 
 ```yaml [robusta.yaml]
-overrides:
-  - files: ["**/src/test/**"]
-    format:
-      line-width: 120
-    lint:
+format:
+  overrides:
+    - files: ["**/src/test/**"]
+      options:
+        line-width: 120
+    - files: ["legacy/**"]
+      exclude-files: ["legacy/api/**"]
+      options:
+        line-width: 140
+lint:
+  overrides:
+    - files: ["**/src/test/**"]
       rules:
         unused-local-variable: allow
-  - files: ["legacy/**"]
-    exclude-files: ["legacy/api/**"]
-    format:
-      line-width: 140
 ```
 
 Each override entry has:
 
 - `files` (required): Glob patterns to match files.
 - `exclude-files` (optional): Glob patterns to exclude from this override.
-- `format`: Formatting options to apply.
-- `lint`: Rule values to apply, under `rules`.
+- `options`: In `format.overrides`, formatting options to apply.
+- `rules`: In `lint.overrides`, rule values to apply.
 
 Glob patterns are resolved relative to the directory containing
 `robusta.yaml`.
