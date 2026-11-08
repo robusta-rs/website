@@ -5,9 +5,9 @@ description: Control which files Robusta checks, formats, and lints.
 
 # Ignore files
 
-Repositories contain Java files that should not be checked, such as generated
-sources or vendored code. Robusta's ignore model works the same way locally,
-in builds, and in CI.
+Repositories contain Java files that should not be checked, such as build
+output, generated sources, or vendored code. Robusta's ignore model works the
+same way locally, in builds, and in CI.
 
 ::: tip
 Prefer `ignore-patterns` in `robusta.yaml` over command-line ignore options.
@@ -21,9 +21,8 @@ Robusta selects `.java` files and automatically ignores:
 - Files matched by `.gitignore` files in a selected directory, its
   subdirectories, and its parents up to the repository root, and by the
   repository's `.git/info/exclude` (global Git ignore files are not respected)
-- Version-control and build directories found inside a selected directory:
-  `.git`, `.gradle`, `.hg`, `.idea`, `.jj`, `.mvn`, `.sl`, `.svn`, `build`,
-  `out`, and `target`
+- Version-control directories found inside a selected directory: `.git`, `.hg`,
+  `.jj`, `.sl`, and `.svn`
 
 Hidden files are not automatically ignored.
 
