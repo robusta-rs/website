@@ -7,8 +7,8 @@ description: Suppress lint findings with @SuppressWarnings or use robusta-disabl
 
 Inline suppressions are an escape hatch for exceptional cases where a rule is
 correct in general but a particular finding is intentional. Robusta supports
-Java's `@SuppressWarnings` annotation and a `//NOROBUSTA` line comment. To
-adopt a rule across an existing project, use a [baseline](./baseline) instead.
+Java's `@SuppressWarnings` annotation and disable comments. To adopt a rule
+across an existing project, use a [baseline](./baseline) instead.
 
 In a line comment (`//`) or block comment (`/* */`), put `robusta-disable-line`
 or `robusta-disable-next-line` at the start of the comment text. List rule names
@@ -56,16 +56,6 @@ Suppress findings that start on the line after the comment ends.
 import java.util.List;
 ```
 
-## `//NOROBUSTA`
-
-Suppress every lint rule for findings starting on the same line:
-
-```java
-import java.util.List; //NOROBUSTA Kept to match generated source.
-```
-
-It does not suppress findings on the next line.
-
 ## Report unused suppressions
 
 Reporting unused suppressions is disabled by default. When enabled, Robusta
@@ -101,5 +91,5 @@ robusta lint --report-unused-suppressions --fix-suggestions
 ```
 
 The suggestion removes Robusta-owned annotation entries while retaining warning
-names used by other tools. Removable line markers are removed too; explanations
-are retained where the source permits a safe edit.
+names used by other tools. Removable disable comments are removed too;
+explanations are retained where the source permits a safe edit.
