@@ -96,8 +96,12 @@ indent_size = 4
 max_line_length = 120
 ```
 
-Robusta uses only the nearest `.editorconfig` above each file; nested
-`.editorconfig` files are not merged.
+Robusta reads the `.editorconfig` files in each Java file's directory and its
+parents:
+
+- The search stops at the first file with `root = true`
+- A closer file's matching sections take precedence, and `unset` removes a
+  value a farther file set
 
 ## Configure run options
 
