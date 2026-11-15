@@ -86,7 +86,8 @@ The [Gradle](./gradle) and [Maven](./maven) pages list every task and goal.
 
 ## Usage
 
-For the complete list of options, see the [CLI reference](./cli).
+For the complete list of options, see the [linter](./linter/cli) and
+[formatter](./formatter/cli) CLI references.
 
 ```sh
 robusta <COMMAND> [OPTIONS] [PATH]...
@@ -229,4 +230,4 @@ robusta lint --rules
 - Run Robusta from your build: [Gradle](./gradle), [Maven](./maven)
 - [Setup CI](./ci)
 - Adopt a rule in existing code: [Suppression baseline](./baseline)
-- [CLI reference](./cli)
+- CLI reference: [linter](./linter/cli), [formatter](./formatter/cli)

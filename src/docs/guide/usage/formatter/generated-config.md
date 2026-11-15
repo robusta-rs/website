@@ -9,7 +9,7 @@ nearest ancestor directory that has one. Every section is optional: an
 omitted option falls back to `.editorconfig` where one applies, and then to
 Robusta's built-in default.
 
-Usage: `robusta lint -c robusta.yaml`
+Usage: `robusta check -c robusta.yaml`
 
 Example
 
@@ -23,7 +23,6 @@ format:
 ignore-patterns:
   - generated/
 lint:
-  categories: {}
   rules:
     unused-import: warn
 ```
@@ -34,8 +33,9 @@ type: `object`
 
 Java formatter policy.
 
-Java formatter settings. Omitted values use `.editorconfig` fallbacks and
-then Robusta's built-in defaults.
+Java formatter settings, their overrides, and the Java files to skip when
+formatting. Omitted settings use `.editorconfig` fallbacks and then
+Robusta's built-in defaults.
 
 ### format.after-closing-brace
 
@@ -45,6 +45,20 @@ Where `else`, `catch`, and `finally` go after a closing brace. Default: `same-li
 
 `same-line` keeps the keyword on the closing brace's line, and `new-line`
 puts it on a new line.
+
+### format.ignore-patterns
+
+type: `string[]`
+
+Java files to skip when formatting, besides those the top-level
+`ignore-patterns` skips.
+
+A `!` pattern re-includes only a path an earlier entry in this list
+skipped.
+
+Gitignore patterns relative to the directory containing `robusta.yaml`.
+A pattern with a `..` segment, or one the gitignore syntax cannot express,
+is rejected when the file is read.
 
 ### format.import-order
 
@@ -186,6 +200,44 @@ type: `integer`
 
 Target maximum line width in Unicode display columns.
 
+### format.overrides
+
+type: `array`
+
+Format settings for the Java files that match globs. When a file
+matches several overrides, the later one wins.
+
+#### format.overrides[n]
+
+type: `object`
+
+Format settings for the Java files one override matches.
+
+##### format.overrides[n].exclude-files
+
+type: `string[]`
+
+Glob patterns for the files this override leaves out.
+
+Glob patterns relative to the directory containing `robusta.yaml`. `*` does not cross `/`, `**` does, and a pattern without `/` matches a name at any depth.
+
+##### format.overrides[n].files
+
+type: `string[]`
+
+Glob patterns for the files this override applies to.
+
+Glob patterns relative to the directory containing `robusta.yaml`. `*` does not cross `/`, `**` does, and a pattern without `/` matches a name at any depth.
+
+##### format.overrides[n].options
+
+type: `object`
+
+Format settings that replace the ones in effect, each named setting on its own.
+
+Java formatter settings. Omitted values use `.editorconfig` fallbacks and
+then Robusta's built-in defaults.
+
 ## ignore-patterns
 
 type: `string[]`
@@ -199,114 +251,3 @@ skipped.
 Gitignore patterns relative to the directory containing `robusta.yaml`.
 A pattern with a `..` segment, or one the gitignore syntax cannot express,
 is rejected when the file is read.
-
-## lint
-
-type: `object`
-
-Which lint rules run, and how loudly.
-
-Category severities and per-rule overrides.
-
-### lint.categories
-
-type: `Record<string, string>`
-
-default: `{}`
-
-Category severities: correctness defaults to `warn`, other categories to `allow`.
-
-### lint.rules
-
-type: `object`
-
-default: `{}`
-
-Built-in rule IDs mapped to `allow`, `warn`, or `deny`, or to
-`[severity, settings]`. Overrides the rule's category severity.
-
-## options
-
-type: `object`
-
-Run-wide options, accepted only in the main configuration.
-
-Run-wide reporting options. CLI flags take precedence.
-
-### options.deny-warnings
-
-type: `boolean`
-
-Fail the run when warnings remain. Equivalent to `--deny-warnings`.
-Only the main configuration may set this; defaults to `false`.
-
-### options.max-warnings
-
-type: `integer`
-
-Fail the run when more warnings remain than this. `--max-warnings` replaces it.
-Only the main configuration may set this; defaults to no limit.
-
-### options.report-unused-suppressions
-
-type: `"allow" | "warn" | "deny"`
-
-Report suppressions that silence no finding, including those for disabled rules.
-Only the main configuration may set this; defaults to `allow`.
-
-Configured severity for lint findings.
-
-## overrides
-
-type: `array`
-
-Settings for the Java files that match patterns. When a file matches
-several overrides, the later one wins.
-
-### overrides[n]
-
-type: `object`
-
-Settings for the Java files one override matches.
-
-#### overrides[n].exclude-files
-
-type: `string[]`
-
-Glob patterns for the files this override leaves out.
-
-Glob patterns relative to the directory containing `robusta.yaml`. `*` does not cross `/`, `**` does, and a pattern without `/` matches a name at any depth.
-
-#### overrides[n].files
-
-type: `string[]`
-
-Glob patterns for the files this override applies to.
-
-Glob patterns relative to the directory containing `robusta.yaml`. `*` does not cross `/`, `**` does, and a pattern without `/` matches a name at any depth.
-
-#### overrides[n].format
-
-type: `object`
-
-Format settings that replace the ones in effect, each named setting on its own.
-
-Java formatter settings. Omitted values use `.editorconfig` fallbacks and
-then Robusta's built-in defaults.
-
-#### overrides[n].lint
-
-type: `object`
-
-Rule values that replace the ones in effect, as `lint.rules` does.
-
-The rules an override changes.
-
-##### overrides[n].lint.rules
-
-type: `object`
-
-default: `{}`
-
-Built-in rule IDs mapped to `allow`, `warn`, or `deny`, or to
-`[severity, settings]`.

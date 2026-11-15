@@ -4,7 +4,6 @@ search: false
 
 - [`robusta`↴](#robusta)
 - [`robusta check`↴](#robusta-check)
-- [`robusta format`↴](#robusta-format)
 - [`robusta lint`↴](#robusta-lint)
 - [`robusta init`↴](#robusta-init)
 - [`robusta config`↴](#robusta-config)
@@ -28,8 +27,6 @@ Format and lint Java source files.
 
 - **`check`** &mdash;
   Verify Java formatting and lints; optionally preview or apply fixes.
-- **`format`** &mdash;
-  Verify Java formatting; optionally preview or apply changes.
 - **`lint`** &mdash;
   Verify enabled lint rules; optionally preview or apply transformations.
 - **`init`** &mdash;
@@ -123,74 +120,9 @@ Arguments:
 - **`    --prune-suppressions`** &mdash;
   Lower or remove obsolete counts in `robusta-suppressions.json`; never raise them.
 - **`    --report-unused-suppressions`** &mdash;
-  Report suppressions like `@SuppressWarnings("robusta:<rule>")` and `//NOROBUSTA` that match no finding. --fix-suggestions removes them.
+  Report suppressions like `@SuppressWarnings("robusta:<rule>")` and `// robusta-disable-line` that match no finding. --fix-suggestions removes them.
 - **`    --report-unused-suppressions-severity`**=_`SEVERITY`_ &mdash;
   Same as --report-unused-suppressions, at severity allow, warn, or deny. Overrides the configuration.
-- **`    --reporter`**=_`FORMAT`_ &mdash;
-  Report format: default, json, checkstyle, github, gitlab, azure-devops, unix, agent, sarif, stylish, or junit.
-- **`    --debug`**=_`OPTIONS`_ &mdash;
-  Enable comma-separated debug options: timings reports per-rule lint timing.
-- **`    --stdin-filepath`**=_`PATH`_ &mdash;
-  Read one document from stdin instead of selecting files, resolving configuration against PATH. A fix flag prints the result to stdout and the report to stderr; no file is written.
-- **`-h`**, **`--help`** &mdash;
-  Prints help information
-
-## robusta format
-
-Verify Java formatting; optionally preview or apply changes.
-
-**Usage**: **`robusta`** **`format`** \[**`-c`**=_`PATH`_\] \[**`--no-nested-config`**\] \[**`--ignore-path`**=_`PATH`_\]... \[**`--ignore-pattern`**=_`PAT`_\]... \[**`--fix`**\] \[**`--diff`** | **`--list-different`**\] \[**`--reporter`**=_`FORMAT`_\] \[**`--debug`**=_`OPTIONS`_\] \[**`--quiet`**\] \[**`--deny-warnings`**\] \[**`--max-warnings`**=_`INT`_\] \[**`--silent`**\] \[**`--no-error-on-unmatched-pattern`**\] \[**`--threads`**=_`INT`_\] \[**`--color`**=_`WHEN`_\] \[**`--stdin-filepath`**=_`PATH`_\] \[_`PATH`_\]...
-
-## Configuration options:
-
-- **`-c`**, **`--config`**=_`PATH`_ &mdash;
-  Use this configuration file instead of discovering `robusta.yaml`.
-- **`    --no-nested-config`** &mdash;
-  Use one configuration discovered from the current directory.
-
-## Ignore options:
-
-- **`    --ignore-path`**=_`PATH`_ &mdash;
-  Path to an additional gitignore-syntax file. Can be specified multiple times.
-- **`    --ignore-pattern`**=_`PAT`_ &mdash;
-  Gitignore-syntax pattern to exclude, resolved from the working directory. Quote it so the shell does not expand it. These patterns are ordered and outrank `--ignore-path` files: the last one to match decides, and a leading `!` reincludes. Can be specified multiple times.
-
-## Warning options:
-
-- **`    --quiet`** &mdash;
-  Disable reporting on warnings; only errors are reported.
-- **`    --deny-warnings`** &mdash;
-  Ensure warnings produce a non-zero exit code.
-- **`    --max-warnings`**=_`INT`_ &mdash;
-  Fail when warning-level rule violations exceed this threshold.
-- **`    --silent`** &mdash;
-  Do not display any diagnostics.
-
-## Runtime options:
-
-- **`    --no-error-on-unmatched-pattern`** &mdash;
-  Do not exit with an error when no files are selected.
-- **`    --threads`**=_`INT`_ &mdash;
-  Number of threads to use. Set to 1 for using only 1 CPU core.
-
-## Color options:
-
-- **`    --color`**=_`WHEN`_ &mdash;
-  When to use colors: auto, always, or never.
-
-## Available positional items:
-
-- _`PATH`_ &mdash;
-  Java source file or directory to process. Defaults to the current directory. Paths must not contain a `..` component.
-
-## Available options:
-
-- **`    --fix`** &mdash;
-  Rewrite files in place; with --stdin-filepath, print the formatted document instead.
-- **`    --diff`** &mdash;
-  Print a unified diff for files that would be changed, and the report to stderr.
-- **`    --list-different`** &mdash;
-  Print only the paths of files that would be changed, and the report to stderr.
 - **`    --reporter`**=_`FORMAT`_ &mdash;
   Report format: default, json, checkstyle, github, gitlab, azure-devops, unix, agent, sarif, stylish, or junit.
 - **`    --debug`**=_`OPTIONS`_ &mdash;
@@ -280,7 +212,7 @@ Arguments:
 ## Available options:
 
 - **`    --rules`** &mdash;
-  List all the rules that are currently registered.
+  List registered rules using the default or JSON reporter.
 - **`    --diff`** &mdash;
   Print a unified diff for files that would be changed, and the report to stderr.
 - **`    --list-different`** &mdash;
@@ -290,7 +222,7 @@ Arguments:
 - **`    --prune-suppressions`** &mdash;
   Lower or remove obsolete counts in `robusta-suppressions.json`; never raise them.
 - **`    --report-unused-suppressions`** &mdash;
-  Report suppressions like `@SuppressWarnings("robusta:<rule>")` and `//NOROBUSTA` that match no finding. --fix-suggestions removes them.
+  Report suppressions like `@SuppressWarnings("robusta:<rule>")` and `// robusta-disable-line` that match no finding. --fix-suggestions removes them.
 - **`    --report-unused-suppressions-severity`**=_`SEVERITY`_ &mdash;
   Same as --report-unused-suppressions, at severity allow, warn, or deny. Overrides the configuration.
 - **`    --reporter`**=_`FORMAT`_ &mdash;
@@ -351,6 +283,6 @@ Print the resolved configuration for the current directory as YAML.
 ## Available options:
 
 - **`    --files`** &mdash;
-  Print the paths the selection would process instead of the configuration.
+  Print the paths `check` would process instead of the configuration.
 - **`-h`**, **`--help`** &mdash;
   Prints help information

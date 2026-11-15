@@ -52,8 +52,8 @@ top-level fields are:
   file patterns, and run-wide options.
 - `ignore-patterns`: Ignore additional files from the config file.
 
-For a complete list of fields, see the
-[Config file reference](./config-file-reference).
+For a complete list of fields, see the [linter](./linter/config-file-reference)
+and [formatter](./formatter/config-file-reference) config file references.
 
 ## JSON schema
 
@@ -251,5 +251,6 @@ An option set to `null`, or left empty, counts as omitted.
   multi-module builds.
 - [Ignore files](./ignore-files): Default ignores, `.gitignore` handling, and
   ignore patterns in config or on the command line.
-- [Config file reference](./config-file-reference): Full schema and field
+- Config file reference for the [linter](./linter/config-file-reference) and
+  the [formatter](./formatter/config-file-reference): Full schema and field
   documentation.

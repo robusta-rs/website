@@ -14,6 +14,6 @@ title: Getting Started
 
 ## Other resources
 
-- [CLI reference](/docs/guide/usage/cli)
-- [Config file reference](/docs/guide/usage/config-file-reference)
+- CLI reference: [linter](/docs/guide/usage/linter/cli), [formatter](/docs/guide/usage/formatter/cli)
+- Config file reference: [linter](/docs/guide/usage/linter/config-file-reference), [formatter](/docs/guide/usage/formatter/config-file-reference)
 - [Releases](https://github.com/robusta-rs/robusta/releases)

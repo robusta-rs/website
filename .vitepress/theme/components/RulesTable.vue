@@ -261,7 +261,7 @@ const filteredAndSorted = computed(() => {
     <tbody>
       <tr v-for="r in filteredAndSorted" :key="r.value">
         <td>
-          <a :href="`/docs/guide/usage/rules/${r.value}`">{{ r.value }}</a>
+          <a :href="`/docs/guide/usage/linter/rules/${r.value}`">{{ r.value }}</a>
         </td>
         <td>{{ r.category }}</td>
         <td style="text-align: center" v-if="r.default">

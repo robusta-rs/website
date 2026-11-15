@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from "vitepress";
 import { computed } from "vue";
-import { data } from "../../../src/docs/guide/usage/rules/version.data.js";
+import { data } from "../../../src/docs/guide/usage/linter/rules/version.data.js";
 
 const { frontmatter } = useData();
 

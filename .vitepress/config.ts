@@ -83,8 +83,16 @@ export default defineConfig({
         text: "Reference",
         items: [
           { text: "Rules reference", link: `${usage}rules` },
-          { text: "CLI reference", link: `${usage}cli` },
-          { text: "Config file reference", link: `${usage}config-file-reference` },
+          { text: "Linter CLI reference", link: `${usage}linter/cli` },
+          {
+            text: "Linter config file reference",
+            link: `${usage}linter/config-file-reference`,
+          },
+          { text: "Formatter CLI reference", link: `${usage}formatter/cli` },
+          {
+            text: "Formatter config file reference",
+            link: `${usage}formatter/config-file-reference`,
+          },
         ],
       },
     ],
