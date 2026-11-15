@@ -1,5 +1,5 @@
 ---
-title: Inline suppressions
+title: "Inline suppressions | Linter"
 description: Suppress lint findings with @SuppressWarnings or use robusta-disable-line and robusta-disable-next-line in line or block comments.
 ---
 

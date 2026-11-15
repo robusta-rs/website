@@ -1,5 +1,5 @@
 ---
-title: Maven
+title: "Maven | Linter and Formatter"
 description: Run Robusta from Maven with the robusta-maven-plugin.
 ---
 
@@ -69,7 +69,7 @@ mvn robusta:run -Drobusta.args="lint --rules"
 Robusta finds its source-run root at the nearest ancestor of Maven's starting
 directory containing `.mvn`; without one, it uses Maven's starting directory.
 Source goals run from that root, scoped to their selected module directories,
-so the modules share its [suppression baseline](./baseline). Configuration
+so the modules share its [suppression baseline](./linter/baseline). Configuration
 goals run in the selected module's directory.
 
 For goals invoked on the command line, the reactor omits module scopes

@@ -1,5 +1,5 @@
 ---
-title: Suppression baseline
+title: "Suppression baseline | Linter"
 description: Enforce a lint rule without fixing every existing error at once.
 ---
 

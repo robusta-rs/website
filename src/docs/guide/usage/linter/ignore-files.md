@@ -1,11 +1,11 @@
 ---
-title: Ignore files
-description: Control which files Robusta checks, formats, and lints.
+title: "Ignore files | Linter"
+description: Control which files Robusta lints.
 ---
 
 # Ignore files
 
-Repositories contain Java files that should not be checked, such as build
+Repositories contain Java files that should not be linted, such as build
 output, generated sources, or vendored code. Robusta's ignore model works the
 same way locally, in builds, and in CI.
 
@@ -47,6 +47,15 @@ generated sources without affecting the rest of the repository. A pattern
 cannot reach outside its configuration directory: one containing `..` is
 rejected.
 
+Top-level `ignore-patterns` apply to every command. To skip files only when
+linting, use `lint.ignore-patterns`:
+
+```yaml [robusta.yaml]
+lint:
+  ignore-patterns:
+    - src/test/resources/
+```
+
 ## Ignore from the command line
 
 Command-line options are useful for one-off changes in CI or local debugging.
@@ -54,13 +63,13 @@ Command-line options are useful for one-off changes in CI or local debugging.
 Use an additional ignore file with gitignore syntax:
 
 ```sh
-robusta check --ignore-path path/to/ignorefile
+robusta lint --ignore-path path/to/ignorefile
 ```
 
 Add ignore patterns, resolved relative to the current directory:
 
 ```sh
-robusta check --ignore-pattern 'generated/' --ignore-pattern '*Generated.java'
+robusta lint --ignore-pattern 'generated/' --ignore-pattern '*Generated.java'
 ```
 
 Quote patterns to avoid shell glob expansion.

@@ -42,6 +42,13 @@ export default defineConfig({
     nav: [
       { text: "Guide", link: "/docs/guide/introduction" },
       {
+        text: "Tools",
+        items: [
+          { text: "Linter", link: `${usage}linter` },
+          { text: "Formatter", link: `${usage}formatter` },
+        ],
+      },
+      {
         text: "Resources",
         items: [
           { text: "Releases", link: "https://github.com/robusta-rs/robusta/releases" },
@@ -52,46 +59,81 @@ export default defineConfig({
     sidebar: [
       {
         text: "Introduction",
+        collapsed: false,
         items: [
           { text: "What is Robusta?", link: "/docs/guide/what-is-robusta" },
           { text: "Getting Started", link: "/docs/guide/introduction" },
         ],
       },
       {
-        text: "Configure and integrate",
+        text: "Linter",
+        collapsed: true,
+        link: `${usage}linter`,
         items: [
-          { text: "Quickstart", link: `${usage}quickstart` },
-          { text: "Configuration", link: `${usage}config` },
-          { text: "Gradle", link: `${usage}gradle` },
-          { text: "Maven", link: `${usage}maven` },
-          { text: "CI & other setup", link: `${usage}ci` },
-          { text: "Nested configs", link: `${usage}nested-config` },
-        ],
-      },
-      {
-        text: "Features",
-        items: [
-          { text: "Automatic fixes", link: `${usage}automatic-fixes` },
-          { text: "Ignore files", link: `${usage}ignore-files` },
-          { text: "Inline suppressions", link: `${usage}ignore-comments` },
-          { text: "Suppression baseline", link: `${usage}baseline` },
-          { text: "Output formats", link: `${usage}output-formats` },
-          { text: "Sorting", link: `${usage}sorting` },
-        ],
-      },
-      {
-        text: "Reference",
-        items: [
-          { text: "Rules reference", link: `${usage}rules` },
-          { text: "Linter CLI reference", link: `${usage}linter/cli` },
+          { text: "Overview", link: `${usage}linter` },
           {
-            text: "Linter config file reference",
-            link: `${usage}linter/config-file-reference`,
+            text: "Configure and integrate",
+            items: [
+              { text: "Quickstart", link: `${usage}linter/quickstart` },
+              { text: "Configuration", link: `${usage}linter/config` },
+              { text: "Gradle", link: `${usage}gradle` },
+              { text: "Maven", link: `${usage}maven` },
+              { text: "CI & other setup", link: `${usage}linter/ci` },
+              { text: "Nested configs", link: `${usage}linter/nested-config` },
+            ],
           },
-          { text: "Formatter CLI reference", link: `${usage}formatter/cli` },
           {
-            text: "Formatter config file reference",
-            link: `${usage}formatter/config-file-reference`,
+            text: "Features",
+            items: [
+              { text: "Automatic fixes", link: `${usage}linter/automatic-fixes` },
+              { text: "Ignore files", link: `${usage}linter/ignore-files` },
+              { text: "Inline suppressions", link: `${usage}linter/ignore-comments` },
+              { text: "Suppression baseline", link: `${usage}linter/baseline` },
+              { text: "Output formats", link: `${usage}linter/output-formats` },
+            ],
+          },
+          {
+            text: "Reference",
+            items: [
+              { text: "Rules reference", link: `${usage}linter/rules` },
+              { text: "CLI reference", link: `${usage}linter/cli` },
+              { text: "Config file reference", link: `${usage}linter/config-file-reference` },
+            ],
+          },
+        ],
+      },
+      {
+        text: "Formatter",
+        collapsed: true,
+        link: `${usage}formatter`,
+        items: [
+          { text: "Overview", link: `${usage}formatter` },
+          {
+            text: "Configure and integrate",
+            items: [
+              { text: "Quickstart", link: `${usage}formatter/quickstart` },
+              { text: "Configuration", link: `${usage}formatter/config` },
+              { text: "Gradle", link: `${usage}gradle` },
+              { text: "Maven", link: `${usage}maven` },
+              { text: "CI & other setup", link: `${usage}formatter/ci` },
+            ],
+          },
+          {
+            text: "Features",
+            items: [
+              { text: "Ignore files", link: `${usage}formatter/ignore-files` },
+              { text: "Sorting", link: `${usage}formatter/sorting` },
+            ],
+          },
+          {
+            text: "Reference",
+            items: [
+              { text: "CLI reference", link: `${usage}formatter/cli` },
+              {
+                text: "Configuration file reference",
+                link: `${usage}formatter/config-file-reference`,
+              },
+            ],
           },
         ],
       },

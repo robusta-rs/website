@@ -1,5 +1,5 @@
 ---
-title: Sorting
+title: "Sorting | Formatter"
 description: Sort Java imports into sections and groups.
 ---
 
@@ -7,8 +7,8 @@ description: Sort Java imports into sections and groups.
 
 Robusta's formatter sorts import declarations.
 
-See [Config file reference](./formatter/config-file-reference#format-import-order) for
-full details.
+See [Config file reference](./config-file-reference#format-import-order) for full
+details.
 
 ## Sort imports
 

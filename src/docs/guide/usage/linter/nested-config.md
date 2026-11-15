@@ -1,5 +1,5 @@
 ---
-title: Nested configuration files
+title: "Nested configuration files | Linter"
 description: Use multiple robusta.yaml files to apply different settings to different parts of a repository.
 ---
 

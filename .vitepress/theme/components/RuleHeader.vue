@@ -49,7 +49,7 @@ const fixMessage = computed(() => {
 <template>
   <div>
     <header>
-      <a class="back-to-rules" href="/docs/guide/usage/rules" aria-label="Back to rules"
+      <a class="back-to-rules" href="/docs/guide/usage/linter/rules" aria-label="Back to rules"
         >← Back to rules</a
       >
       <h1>{{ rule }} <Badge type="info" :text="category" /></h1>

@@ -1,5 +1,5 @@
 ---
-title: Automatic fixes
+title: "Automatic fixes | Linter"
 description: Apply safe, suggested, and dangerous fixes with Robusta.
 ---
 
@@ -78,7 +78,7 @@ robusta lint --fix-suggestions --diff
 
 `robustaLintFix`, `robustaCheckFix`, `robusta:lint-fix`, and
 `robusta:check-fix` apply safe fixes. Pass the other modes as
-[command-line options](./gradle#pass-command-line-options):
+[command-line options](../gradle#pass-command-line-options):
 
 ::: code-group
 

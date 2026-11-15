@@ -1,5 +1,5 @@
 ---
-title: Rules
+title: "Rules | Linter"
 editLink: false
 ---
 
@@ -19,7 +19,7 @@ const fixableCount = rules.filter((r) => r.fix !== "none").length;
 
 ::: details Rule categories
 
-Categories group rules by intent and can be enabled together in configuration. See [Enable groups of rules with categories](/docs/guide/usage/config#enable-groups-of-rules-with-categories) for details.
+Categories group rules by intent and can be enabled together in configuration. See [Enable groups of rules with categories](/docs/guide/usage/linter/config#enable-groups-of-rules-with-categories) for details.
 
 :::
 

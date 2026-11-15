@@ -1,5 +1,5 @@
 ---
-title: Gradle
+title: "Gradle | Linter and Formatter"
 description: Run Robusta from Gradle with the rs.robusta plugin.
 ---
 
@@ -62,7 +62,7 @@ Use `robustaRun` for an arbitrary native command:
 
 Source tasks run from the root project's directory, scoped to the selected
 project's directory. This keeps source runs on the root
-[suppression baseline](./baseline). Configuration tasks run from the selected
+[suppression baseline](./linter/baseline). Configuration tasks run from the selected
 project's directory.
 
 ```sh

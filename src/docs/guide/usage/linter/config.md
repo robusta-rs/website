@@ -1,15 +1,16 @@
 ---
-title: Configuration
-description: Configure Robusta using a robusta.yaml file.
+title: "Configuration | Linter"
+description: Configure Robusta's linter using a robusta.yaml file.
 ---
 
 # Configuration
 
 Robusta works out of the box, but most teams commit a `robusta.yaml` to keep
-formatting and linting consistent across local runs, builds, and CI.
+linting consistent across local runs, builds, and CI.
 
-This page focuses on project configuration: formatting, rules, categories,
-overrides, and run options.
+This page focuses on lint configuration: rules, categories, overrides, and run
+options. Formatting is configured in the same file; see the formatter's
+[Configuration](../formatter/config).
 
 ## Create a config file
 
@@ -24,16 +25,14 @@ directory. You can also pass a config explicitly, which disables
 [nested config](./nested-config) lookup:
 
 ```sh
-robusta check -c ./robusta.yaml
+robusta lint -c ./robusta.yaml
 # or
-robusta check --config ./robusta.yaml
+robusta lint --config ./robusta.yaml
 ```
 
 A minimal configuration looks like this:
 
 ```yaml [robusta.yaml]
-format:
-  line-width: 120
 lint:
   categories:
     correctness: deny
@@ -52,56 +51,14 @@ top-level fields are:
   file patterns, and run-wide options.
 - `ignore-patterns`: Ignore additional files from the config file.
 
-For a complete list of fields, see the [linter](./linter/config-file-reference)
-and [formatter](./formatter/config-file-reference) config file references.
+For a complete list of fields, see the
+[Config file reference](./config-file-reference).
 
 ## JSON schema
 
 `robusta init` starts the file with a `yaml-language-server` modeline that
 points at Robusta's JSON Schema. Editors with YAML language support use it for
 validation, completion, and option descriptions.
-
-## Configure formatting
-
-Formatting options live under `format`:
-
-```yaml [robusta.yaml]
-format:
-  line-width: 100
-  indent-style: space
-  indent-width: 4
-  javadoc: true
-```
-
-Import order is described in [Sorting](./sorting).
-
-## `.editorconfig`
-
-Robusta reads these `.editorconfig` properties for options omitted from
-`robusta.yaml`:
-
-- `indent_style` → `format.indent-style`
-- `indent_size`, `tab_width` → `format.indent-width`
-- `end_of_line` → `format.line-ending`
-- `insert_final_newline` → `format.insert-final-newline`
-- `max_line_length` → `format.line-width`
-
-Both the root section and glob sections that match a Java file are supported.
-
-```ini
-[*]
-indent_size = 4
-
-[*.java]
-max_line_length = 120
-```
-
-Robusta reads the `.editorconfig` files in each Java file's directory and its
-parents:
-
-- The search stops at the first file with `root = true`
-- A closer file's matching sections take precedence, and `unset` removes a
-  value a farther file set
 
 ## Configure run options
 
@@ -203,32 +160,25 @@ robusta lint -D correctness -W style
 
 ## Overrides
 
-Use `format.overrides` to apply different formatting options, and
-`lint.overrides` to apply different rule values, to specific files:
+Use `lint.overrides` to apply different rule values to specific files:
 
 ```yaml [robusta.yaml]
-format:
-  overrides:
-    - files: ["**/src/test/**"]
-      options:
-        line-width: 120
-    - files: ["legacy/**"]
-      exclude-files: ["legacy/api/**"]
-      options:
-        line-width: 140
 lint:
   overrides:
     - files: ["**/src/test/**"]
       rules:
         unused-local-variable: allow
+    - files: ["legacy/**"]
+      exclude-files: ["legacy/api/**"]
+      rules:
+        unused-import: allow
 ```
 
 Each override entry has:
 
 - `files` (required): Glob patterns to match files.
 - `exclude-files` (optional): Glob patterns to exclude from this override.
-- `options`: In `format.overrides`, formatting options to apply.
-- `rules`: In `lint.overrides`, rule values to apply.
+- `rules`: Rule values to apply.
 
 Glob patterns are resolved relative to the directory containing
 `robusta.yaml`.
@@ -240,8 +190,7 @@ Each option takes the first available value:
 1. The value from the last matching override that sets it.
 2. A command-line flag, where one exists.
 3. An explicit value in `robusta.yaml`.
-4. A matching `.editorconfig` property, for the options it supports.
-5. Robusta's built-in default.
+4. Robusta's built-in default.
 
 An option set to `null`, or left empty, counts as omitted.
 
@@ -251,6 +200,5 @@ An option set to `null`, or left empty, counts as omitted.
   multi-module builds.
 - [Ignore files](./ignore-files): Default ignores, `.gitignore` handling, and
   ignore patterns in config or on the command line.
-- Config file reference for the [linter](./linter/config-file-reference) and
-  the [formatter](./formatter/config-file-reference): Full schema and field
+- [Config file reference](./config-file-reference): Full schema and field
   documentation.

@@ -1,12 +1,12 @@
 ---
-title: Quickstart
-description: Install Robusta and learn the common workflows.
+title: "Quickstart | Linter"
+description: Install Robusta and learn the common linting workflows.
 ---
 
 # Quickstart
 
-This page shows how to set up Robusta and the most common workflows, with
-copy-paste commands.
+This page shows how to set up Robusta's linter and the most common workflows,
+with copy-paste commands.
 
 ## Install
 
@@ -51,57 +51,50 @@ Run it:
 ::: code-group
 
 ```sh [Gradle]
-./gradlew robustaCheck
+./gradlew robustaLint
 ```
 
 ```sh [Maven]
-mvn robusta:check
+mvn robusta:lint
 ```
 
 ```sh [Native]
-robusta check
+robusta lint
 ```
 
 :::
 
-Apply fixes:
+Apply safe fixes:
 
 ::: code-group
 
 ```sh [Gradle]
-./gradlew robustaCheckFix
+./gradlew robustaLintFix
 ```
 
 ```sh [Maven]
-mvn robusta:check-fix
+mvn robusta:lint-fix
 ```
 
 ```sh [Native]
-robusta check --fix
+robusta lint --fix
 ```
 
 :::
 
-The [Gradle](./gradle) and [Maven](./maven) pages list every task and goal.
+The [Gradle](../gradle) and [Maven](../maven) pages list every task and goal.
 
 ## Usage
 
-For the complete list of options, see the [linter](./linter/cli) and
-[formatter](./formatter/cli) CLI references.
+For the complete list of options, see the [CLI reference](./cli).
 
 ```sh
-robusta <COMMAND> [OPTIONS] [PATH]...
+robusta lint [OPTIONS] [PATH]...
 ```
 
-| Command  | Effect                               |
-| -------- | ------------------------------------ |
-| `check`  | Verify formatting and lint findings. |
-| `format` | Verify formatting.                   |
-| `lint`   | Report lint findings.                |
-| `init`   | Create a starter `robusta.yaml`.     |
-| `config` | Print the resolved configuration.    |
+If `PATH` is omitted, Robusta lints the current working directory.
 
-If `PATH` is omitted, Robusta processes the current working directory.
+`robusta check` runs the linter and the [formatter](../formatter) together.
 
 ## Common workflows
 
@@ -118,10 +111,10 @@ needed. See [Configuration](./config).
 
 ### Fix problems
 
-Write formatting changes and safe lint fixes:
+Apply safe fixes:
 
 ```sh
-robusta check --fix
+robusta lint --fix
 ```
 
 Apply suggestions (may change program behavior):
@@ -138,36 +131,12 @@ robusta lint --fix-dangerously
 
 See [Automatic fixes](./automatic-fixes) for guidance on when to use each mode.
 
-### Preview changes
-
-Print a unified diff of formatting changes and safe lint fixes instead of
-writing them:
-
-```sh
-robusta check --diff
-```
-
-List the files that would change:
-
-```sh
-robusta format --list-different
-```
-
-### Piping file contents
-
-Format one document from standard input, resolving configuration as if it were
-at the given path:
-
-```sh
-cat Example.java | robusta format --fix --stdin-filepath src/main/java/Example.java
-```
-
 ### Ignore files
 
 Add ignore patterns from the command line:
 
 ```sh
-robusta check --ignore-pattern "generated/" --ignore-pattern "*Generated.java"
+robusta lint --ignore-pattern "generated/" --ignore-pattern "*Generated.java"
 ```
 
 See [Ignore files](./ignore-files).
@@ -177,19 +146,19 @@ See [Ignore files](./ignore-files).
 Only report errors:
 
 ```sh
-robusta check --quiet
+robusta lint --quiet
 ```
 
 Fail if any warnings are found:
 
 ```sh
-robusta check --deny-warnings
+robusta lint --deny-warnings
 ```
 
 Fail if warnings exceed a threshold:
 
 ```sh
-robusta check --max-warnings 0
+robusta lint --max-warnings 0
 ```
 
 See [CI setup](./ci).
@@ -199,7 +168,7 @@ See [CI setup](./ci).
 Select a report format:
 
 ```sh
-robusta check --reporter json
+robusta lint --reporter json
 ```
 
 See [Output formats](./output-formats) for every format.
@@ -212,7 +181,7 @@ Print the configuration that applies to the current directory:
 robusta config
 ```
 
-List the files a run would process:
+List the files `check` would process:
 
 ```sh
 robusta config --files
@@ -224,10 +193,12 @@ robusta config --files
 robusta lint --rules
 ```
 
+The full list is in the [Rules reference](./rules).
+
 ## Next steps
 
-- Configure formatting, rules, and ignores: [Configuration](./config)
-- Run Robusta from your build: [Gradle](./gradle), [Maven](./maven)
+- Configure rules and ignores: [Configuration](./config)
+- Run Robusta from your build: [Gradle](../gradle), [Maven](../maven)
 - [Setup CI](./ci)
 - Adopt a rule in existing code: [Suppression baseline](./baseline)
-- CLI reference: [linter](./linter/cli), [formatter](./formatter/cli)
+- [CLI reference](./cli)

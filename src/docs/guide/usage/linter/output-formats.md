@@ -1,5 +1,5 @@
 ---
-title: Output formats
+title: "Output formats | Linter"
 description: Report Robusta results in formats for CI and other tools.
 ---
 
