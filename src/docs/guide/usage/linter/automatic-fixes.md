@@ -1,6 +1,6 @@
 ---
 title: "Automatic fixes | Linter"
-description: Apply safe, suggested, and dangerous fixes with Robusta.
+description: Apply safe and unsafe fixes with Robusta.
 ---
 
 # Automatic fixes
@@ -25,51 +25,28 @@ robusta lint --fix
 
 With `check`, `--fix` applies safe lint fixes first and then formatting.
 
-## Suggestions
+## Unsafe fixes
 
-Suggestions are changes that may alter behavior or may not match your intent.
+Unsafe fixes are changes that may alter what the code does or stop it
+compiling. Review the result.
 
-Apply suggestions:
-
-```sh
-robusta lint --fix-suggestions
-```
-
-## Dangerous fixes
-
-Dangerous fixes are aggressive changes that may break your code.
-
-Apply dangerous fixes:
+Apply safe and unsafe fixes:
 
 ```sh
-robusta lint --fix-dangerously
+robusta lint --fix --unsafe-fixes
 ```
 
-`--fix-dangerously` applies every fix kind, including suggestions.
-
-## Combining fix modes
-
-You can combine safe fixes and suggestions:
-
-```sh
-robusta lint --fix --fix-suggestions
-```
-
-You can also include dangerous fixes:
-
-```sh
-robusta lint --fix --fix-suggestions --fix-dangerously
-```
+`--unsafe-fixes` alone is rejected: it widens what `--fix` writes or what a
+preview shows.
 
 ## Preview fixes
 
 `--diff` prints the changes as a unified diff instead of writing them, and
 `--list-different` prints only the paths that would change. Both preview safe
-fixes by default; pass `--fix-suggestions` or `--fix-dangerously` to preview
-that mode instead:
+fixes; add `--unsafe-fixes` to include unsafe fixes:
 
 ```sh
-robusta lint --fix-suggestions --diff
+robusta lint --diff --unsafe-fixes
 ```
 
 `--fix` cannot be combined with a preview.
@@ -77,24 +54,25 @@ robusta lint --fix-suggestions --diff
 ## Gradle and Maven
 
 `robustaLintFix`, `robustaCheckFix`, `robusta:lint-fix`, and
-`robusta:check-fix` apply safe fixes. Pass the other modes as
-[command-line options](../gradle#pass-command-line-options):
+`robusta:check-fix` apply safe fixes. Pass `--unsafe-fixes` as a
+[command-line option](../gradle#pass-command-line-options) to include unsafe
+fixes:
 
 ::: code-group
 
 ```sh [Gradle]
-./gradlew robustaLintFix --args="--fix-suggestions"
+./gradlew robustaLintFix --args="--unsafe-fixes"
 ```
 
 ```sh [Maven]
-mvn robusta:lint-fix -Drobusta.args="--fix-suggestions"
+mvn robusta:lint-fix -Drobusta.args="--unsafe-fixes"
 ```
 
 :::
 
 ## Rule support
 
-Not all rules provide fixes. Some rules support safe fixes, some provide
-suggestions or dangerous fixes, and some do not provide fixes. A finding is
-also reported without a fix when its context makes the edit unsafe, such as a
-comment inside the code the fix would remove.
+Not all rules provide fixes. Some rules support safe fixes, some also provide
+unsafe fixes, and some do not provide fixes. A finding is also reported without
+a fix when its context rules the edit out, such as a comment inside the code the
+fix would remove.

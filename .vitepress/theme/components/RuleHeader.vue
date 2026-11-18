@@ -16,23 +16,20 @@ const hasFixMessage = computed(() => {
 const emoji = computed(() => fixEmoji(fix));
 
 const fixMessage = computed(() => {
-  // Parse tokens after the prefix (e.g., "fixable_dangerous_fix_or_suggestion")
+  // Parse tokens after the prefix (e.g., "fixable_safe_fix_or_unsafe_fix")
   const tokens = fix.split("_");
   const prefix = tokens[0];
   const rest = tokens.slice(1);
   const isConditional = prefix === "conditional";
-  const hasFix = rest.includes("fix");
-  const hasSuggestion = rest.includes("suggestion");
-  const isDangerous = rest.includes("dangerous");
+  const isUnsafe = rest.includes("unsafe");
+  const isSafe = rest.includes("safe");
 
-  let noun = "auto-fix is available for this rule";
-  if (hasFix && hasSuggestion) {
-    noun = "auto-fix and a suggestion are available for this rule";
-  } else if (hasSuggestion) {
-    noun = "suggestion is available for this rule";
+  let message = "auto-fix is available for this rule";
+  if (isSafe && isUnsafe) {
+    message = "safe and an unsafe auto-fix are available for this rule";
+  } else if (isUnsafe) {
+    message = "unsafe auto-fix is available for this rule";
   }
-
-  let message = isDangerous ? `dangerous ${noun}` : noun;
 
   // Article selection
   const first = message.trim().charAt(0).toLowerCase();

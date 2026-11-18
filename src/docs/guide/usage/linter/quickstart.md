@@ -117,16 +117,10 @@ Apply safe fixes:
 robusta lint --fix
 ```
 
-Apply suggestions (may change program behavior):
+Also apply unsafe fixes (may change what the code does or stop it compiling):
 
 ```sh
-robusta lint --fix-suggestions
-```
-
-Apply dangerous fixes and suggestions:
-
-```sh
-robusta lint --fix-dangerously
+robusta lint --fix --unsafe-fixes
 ```
 
 See [Automatic fixes](./automatic-fixes) for guidance on when to use each mode.

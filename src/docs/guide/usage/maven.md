@@ -55,7 +55,7 @@ when you want it in CI.
 `robusta.args` appends options to a fixed goal:
 
 ```sh
-mvn robusta:lint-fix -Drobusta.args="--fix-suggestions --report-unused-suppressions"
+mvn robusta:lint-fix -Drobusta.args="--unsafe-fixes --report-unused-suppressions"
 ```
 
 For an arbitrary native command, use the pass-through goal:

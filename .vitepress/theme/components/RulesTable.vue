@@ -99,26 +99,14 @@ const fixTitle = (fix: string) => {
       return "Has automatic fix";
     case "conditional_fix":
       return "Has conditional automatic fix";
-    case "fixable_suggestion":
-      return "Has automatic suggestion";
-    case "conditional_suggestion":
-      return "Has conditional suggestion";
-    case "fixable_dangerous_fix":
-      return "Has dangerous automatic fix";
-    case "conditional_dangerous_fix":
-      return "Has conditional dangerous fix";
-    case "fixable_dangerous_suggestion":
-      return "Has dangerous suggestion";
-    case "conditional_dangerous_suggestion":
-      return "Has conditional dangerous suggestion";
-    case "fixable_safe_fix_or_suggestion":
-      return "Has fix or suggestion";
-    case "conditional_safe_fix_or_suggestion":
-      return "Has conditional fix or suggestion";
-    case "fixable_dangerous_fix_or_suggestion":
-      return "Has dangerous fix or suggestion";
-    case "conditional_dangerous_fix_or_suggestion":
-      return "Has conditional dangerous fix or suggestion";
+    case "fixable_unsafe_fix":
+      return "Has unsafe automatic fix";
+    case "conditional_unsafe_fix":
+      return "Has conditional unsafe fix";
+    case "fixable_safe_fix_or_unsafe_fix":
+      return "Has safe or unsafe fix";
+    case "conditional_safe_fix_or_unsafe_fix":
+      return "Has conditional safe or unsafe fix";
     case "none":
     default:
       return "No fix available";

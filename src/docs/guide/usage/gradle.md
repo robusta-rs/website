@@ -49,7 +49,7 @@ Robusta tasks are not attached to Gradle's `check` task automatically. Invoke
 `--args` appends options to a task's command:
 
 ```sh
-./gradlew robustaLintFix --args="--fix-suggestions --report-unused-suppressions"
+./gradlew robustaLintFix --args="--unsafe-fixes --report-unused-suppressions"
 ```
 
 Use `robustaRun` for an arbitrary native command:

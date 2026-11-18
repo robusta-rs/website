@@ -26,9 +26,7 @@ Categories group rules by intent and can be enabled together in configuration. S
 ::: details Legend for 'Fixable?' column
 
 - 🛠️: an auto-fix is available for this rule
-- 💡: a suggestion is available for this rule
-- ⚠️🛠️: a dangerous auto-fix is available for this rule
-- ⚠️💡: a dangerous suggestion is available for this rule
+- ⚠️🛠️: an unsafe auto-fix is available for this rule
 
 :::
 
