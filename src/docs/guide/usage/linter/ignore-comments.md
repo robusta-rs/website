@@ -84,12 +84,12 @@ lint:
     report-unused-suppressions: warn # or allow or deny
 ```
 
-To remove unused suppressions, add `--fix-suggestions`:
+To remove unused suppressions, add `--fix`:
 
 ```sh
-robusta lint --report-unused-suppressions --fix-suggestions
+robusta lint --report-unused-suppressions --fix
 ```
 
-The suggestion removes Robusta-owned annotation entries while retaining warning
+The fix removes Robusta-owned annotation entries while retaining warning
 names used by other tools. Removable disable comments are removed too;
 explanations are retained where the source permits a safe edit.
