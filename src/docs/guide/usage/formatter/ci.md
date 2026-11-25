@@ -32,7 +32,8 @@ on:
   push:
     branches: [main]
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   robusta:
@@ -59,7 +60,8 @@ on:
   push:
     branches: [main]
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   robusta:
