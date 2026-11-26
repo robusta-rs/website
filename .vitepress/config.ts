@@ -1,7 +1,9 @@
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitepress";
+import { groupIconMdPlugin, groupIconVitePlugin } from "vitepress-plugin-group-icons";
 import { ruleHowToUseMdPlugin } from "./plugins/ruleHowToUse";
+import llmstxt from "vitepress-plugin-llms";
 
 const TITLE = "Robusta";
 const DESCRIPTION = "Format and lint Java with one native executable.";
@@ -34,6 +36,7 @@ export default defineConfig({
     theme: { light: "gruvbox-light-medium", dark: "gruvbox-dark-medium" },
     config(md) {
       md.use(ruleHowToUseMdPlugin);
+      md.use(groupIconMdPlugin);
     },
   },
   themeConfig: {
@@ -160,6 +163,7 @@ export default defineConfig({
   },
   vite: {
     publicDir: resolve(dirname(fileURLToPath(import.meta.url)), "../public"),
+    plugins: [groupIconVitePlugin(), llmstxt()],
     resolve: {
       alias: [
         {
