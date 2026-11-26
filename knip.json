@@ -2,8 +2,7 @@
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "entry": [".vitepress/config.ts", "src/**/*.md!", ".vitepress/theme/**/*.vue!"],
   "project": [".vitepress/**/*.{ts,vue}", "src/**/*.md"],
-  "ignore": [".vitepress/cache/**", "build/**"],
-  "ignoreDependencies": ["wrangler"],
-  "ignoreBinaries": ["typos"],
+  "ignore": [".vitepress/cache/**", ".vitepress/dist/**", "build/**"],
+  "ignoreDependencies": ["esbuild", "wrangler"],
   "ignoreExportsUsedInFile": true
 }
