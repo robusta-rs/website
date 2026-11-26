@@ -1,3 +1,4 @@
+import "virtual:group-icons.css";
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import RulesTable from "./components/RulesTable.vue";
