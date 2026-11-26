@@ -15,14 +15,6 @@
       "matchManagers": ["github-actions"],
       "rangeStrategy": "auto",
       "minimumReleaseAge": "3 days"
-    },
-    {
-      "groupName": "typos",
-      "matchManagers": ["github-actions"],
-      "matchDepNames": ["crate-ci/typos"],
-      "schedule": ["at any time"],
-      "rangeStrategy": "auto",
-      "automergeSchedule": ["at any time"]
     }
   ]
 }
